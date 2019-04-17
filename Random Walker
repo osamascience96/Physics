@@ -1,0 +1,55 @@
+// Main function Code 
+
+Walker w; // object for walker 
+
+void setup(){
+  // size of the screen 
+  size(640, 360);
+  // init the object for walker 
+  w = new Walker(640, 360);
+  // init the background for the screen 
+  background(255);
+}
+
+// The draw function is called perodically 
+void draw(){
+  w.step();
+  w.displayPoint();
+}
+
+
+
+
+// Walker Class Code 
+class Walker{
+  // member variables for location 
+  // location axis
+  int x;
+  int y;
+  
+  // constructor 
+  Walker(int width, int height){
+    // init the x and y to the center of the screen 
+    x = width / 2;
+    y = height / 2;
+  }
+  
+  // fuction that chooses the random step 
+  void step(){
+    
+    // results the values between (-1, 0 , 1) for 9 possible steps
+    // each time the both x and y values changed in each iteration
+    int stepX = int(random(3)) - 1;
+    int stepY = int(random(3)) - 1;
+    
+    x += stepX;
+    y += stepY;
+  }
+  
+  // display the point at x and y coordinates
+  void displayPoint(){
+    stroke(0);
+    point(x, y);
+  }
+  
+}
