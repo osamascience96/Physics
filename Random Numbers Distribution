@@ -1,0 +1,26 @@
+int randomCounts[];
+
+void setup(){
+  size(640, 240);
+  randomCounts = new int[20]; // init the array of random numbers to store random numbers
+  background(255);
+  
+  // change the value of width to 1/randomCounts.length part of the screen 
+  width = width/randomCounts.length;
+}
+
+// draw function called periodically
+void draw(){
+  int index = int(random(randomCounts.length)); // yeild random numbers from 0 to arraylength-1
+  randomCounts[index]++;
+  
+  // init the stroke and fill for the rectangle to be created in the graph
+  stroke(0);
+  fill(175);
+  
+  // init the rectange up to array length iterations to equal size on the screen uniformly using the randomnumbers array 
+  for (int x=0; x < randomCounts.length; x++ ){
+    rect(x*width, height-randomCounts[x], width, randomCounts[x]);
+  }
+  
+}
